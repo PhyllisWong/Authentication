@@ -1,31 +1,30 @@
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
     bcrypt = require("bcryptjs"),
     Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
+const UserSchema = new Schema({
     createdAt       : { type: Date }
   , updatedAt       : { type: Date }
 
-  , email           : { type: String, unique: true, required: true }
+  , username        : { type: String, unique: true, required: true }
   , password        : { type: String, required: true }
-  , first           : { type: String, required: true }
-  , last            : { type: String, required: true }
+
 
 });
 
 UserSchema.pre('save', function(next){
   // SET createdAt AND updatedAt
-  var now = new Date();
+  const now = new Date();
   this.updatedAt = now;
   if ( !this.createdAt ) {
     this.createdAt = now;
-  };
+  }
 
   // ENCRYPT PASSWORD
-  var user = this;
+  const user = this;
   if (!user.isModified('password')) {
     return next();
-  };
+  }
   bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(user.password, salt, function(err, hash) {
       user.password = hash;
