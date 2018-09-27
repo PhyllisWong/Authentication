@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <form action="/login" id="login" method="post">
+            <legend>Create an Account</legend>
+            <div class="form-group">
+                <label for="post-title">username</label>
+                <input type="text" name="username" class="form-control" id="login-username" placeholder="username">
+            </div>
+            <div class="form-group">
+                <label for="post-subreddit">Password</label>
+                <input name="password" type="password" class="form-control" id="login-pw" placeholder="******" />
+            </div>
+            <div class='text-right'>
+                <button type="submit" class="btn btn-primary">Login!</button>
+            </div>
+        </form>
+        {{message}}
+    </div>
+</div>
