@@ -44,8 +44,8 @@ app.set('view engine', 'hbs');
 // Static content
 app.use(exp.static('./public'));
 
-app.get('/', (req, res) => {
-  res.send('Hello Sloths');
+app.get('/login', (req, res) => {
+  res.render('login');
 });
 
 
